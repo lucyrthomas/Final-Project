@@ -7,7 +7,7 @@ Before you can run any of the programs, you will have to fork the respository. H
 1. First, navigate to the GitHub repository. 
 2. On the repository page, click the "Fork" button in the upper right corner. This will create a copy of the repository in your GitHub account. 
 3. Go to R.Studio and click "File" --> "New Project" --> "Version Control".
-4. Choose "Git" as the type of version control system.
+4. Select "Git".
 5. In the "Repository URL" box, paste the URL of the forked repository.
 6. Add .git to the URL
 7. Choose a directory where you want to save the project on your computer.
