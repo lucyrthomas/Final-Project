@@ -40,7 +40,7 @@ server <- function(input, output, session) {
   
   observeEvent(input$count, {
     word <- input$word
-    n_syllables <- str_count(word, "[AEIOUYaeiouy]+[AEIOUYaeiouy^]*[AEIOUYaeiouy]*")
+    n_syllables <- str_count(word, "[AEIOUYaeiouy]+[AEIOUYaeiouy^]*[AEIOUYaeiouy]*") #identifies syllables as strings with one or more vowels or y, followed by zero or more characters that are not vowels or y, and ends with zero or more characters that are vowels or y
     output$syllables <- renderText(paste0("The word '", word, "' has ", n_syllables, " syllables."))
   })
   
@@ -49,7 +49,7 @@ server <- function(input, output, session) {
       input_text <- input$text
       utterances <- strsplit(input_text, "\n")[[1]] #identifies utterances based on new lines
       morphemes <- lapply(strsplit(utterances, "\\.|\\s", ), length) #identifies morphemes based on periods and whitespaces
-      total_morphemes <- sum(unlist(morphemes))
+      total_morphemes <- sum(unlist(morphemes)) #the unlisted elements are then added together using sum() to get the total number of morphemes
       total_utterances <- length(utterances)
       mean_length <- total_morphemes / total_utterances
       paste0("Mean length of utterance (in morphemes): ", round(mean_length, 2))
