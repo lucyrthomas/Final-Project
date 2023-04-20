@@ -8,4 +8,5 @@ I used the swirlify,swirl and stringr packages in R to create this lesson.
 1. Download the My_Course.swc file 
 2. Call the the install_course() function in swirl, which will prompt you to select the file you downloaded.
 3. Start the course by calling the swirl() function
+4. If you would like to just view the code, open the "Swirl Code" file
 
