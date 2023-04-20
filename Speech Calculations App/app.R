@@ -4,7 +4,7 @@ library(stringr)
 ui <- fluidPage(
   titlePanel("Speech Calculations App"),
   
-  tabsetPanel(
+  tabsetPanel(  #tab 1
     tabPanel(
       p("Speech Rate Calculator"),
       numericInput("numwords", "Enter the number of words", value = 0),
@@ -12,13 +12,13 @@ ui <- fluidPage(
       textOutput("speech_rate")
       
     ),
-    tabPanel(
+    tabPanel(  #tab 2
       p("Syllable Counter"),
       textInput("word", "Enter word here"),
       actionButton('count', "Count Syllables"),
       textOutput("syllables")
     ),
-    tabPanel(
+    tabPanel(  #tab 3
       p("Mean Length of Utterance Calculator"),
       helpText("This Mean Length of Utterance Calculator divides the total number of morphemes by the number of utterances. To use this app, input 100 utterances, with one utterance per line and each morpheme within a word separated by a dot. A morpheme is the smallest indivisible unit of language that has meaning. For example -ing, -ed, and im-. An example of the proper formatting for using the app is: I am runn.ing"),
       textAreaInput("text", "Utterances:", height = "400px"),
@@ -47,8 +47,8 @@ server <- function(input, output, session) {
   {
     output$result <- renderPrint({
       input_text <- input$text
-      utterances <- strsplit(input_text, "\n")[[1]]
-      morphemes <- lapply(strsplit(utterances, "\\.|\\s", ), length)
+      utterances <- strsplit(input_text, "\n")[[1]] #identifies utterances based on new lines
+      morphemes <- lapply(strsplit(utterances, "\\.|\\s", ), length) #identifies morphemes based on periods and whitespaces
       total_morphemes <- sum(unlist(morphemes))
       total_utterances <- length(utterances)
       mean_length <- total_morphemes / total_utterances
